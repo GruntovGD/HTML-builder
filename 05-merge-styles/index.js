@@ -1,10 +1,11 @@
 const fs = require('fs');
 const path = require('path');
 
-const bundle = path.join(__dirname, 'bundle.css')
+const bundle = path.join(__dirname, 'project-dist', 'bundle.css')
 
 async function main() {
-  const ws = await fs.createWriteStream(bundle);
+  await fs.promises.writeFile(bundle,'');  
+  let ws = await fs.createWriteStream(bundle);
   fs.promises.truncate(bundle);
   const stylePath = path.join(__dirname, 'styles');
   let rs
